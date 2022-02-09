@@ -1,0 +1,33 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+<h1>View And Edit Your Profile</h1>
+    <table style="text-align: center; margin-bottom: 100px;" width="500px" border="1">
+        <tr>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Image</th>
+            <th>Email</th>
+            <th>Edit</th>
+            
+        </tr>
+                <tr>
+                    <td>{{request.user.username }}</td>
+                    <td>{{request.user.first_name }}</td>
+                    <td>{{request.user.last_name}}</td>
+                    <td><img src="{{request.user.image.url}}" alt="img"></td>
+                    <td>{{request.user.email}}</td>
+                    <td><a href="{% url 'frontend:edit_profile' %}" class="btn btn-success">edit profile</a></td>
+                    
+                </tr>
+            
+    </table>
+
+{% endblock %}

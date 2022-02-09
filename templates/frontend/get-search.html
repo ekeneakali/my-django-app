@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="e-commerce">
+    <meta name="keywords" content="html,css,bootstrap,javascript,python,django">
+    <meta name="founder" content="ekene akali">
+    <meta name="services" content="online store, online retail, online marketing, e-commerce, buisness to buisness, buisness to consumer, consumer to buisness">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get-search</title>
+</head>
+<body>
+            {% if query %}
+                {% for x in query %}
+                     <center><h2>{{request.user.username}}:you search for...</h2></center>
+                    <p>Name of product:{{x.pst_title}}</p>
+                    <p>Created by:{{x.created_by}}</p>
+                    <a href="{% url 'frontend:get_video' x.id %}"><video src="{{x.video.url}}" width="300px" controls></video></a>
+                    <p>Category:{{x.category}}</p>
+                    <p>Description:{{x.content }}</p>
+                    <p>Uploaded on:{{x.created_at}}</p>
+                {% endfor %}
+                    {% else %}
+                    <a href="{% url 'home' %}"><center><h6>no result found</h6></center></a>
+            {% endif %}
+    <div style="text-align: center;">
+        <form action="{% url 'frontend:get_search' %}" method="get">
+            <input type="text" name="search" placeholder="search for video sales here">
+            <button type="submit" class="btn btn-primary">search videos</button>
+            {% csrf_token %}
+            
+        </form>
+        
+    </div>
+    
+    
+</body>
+</html>

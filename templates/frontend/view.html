@@ -1,0 +1,19 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  view
+{% endblock %}
+
+{% block content %}
+
+        {% if get %}
+            <p>{{get.username}}</p>
+            <p>{{get.first_name}}</p>
+            <p>{{get.last_name}}</p>
+            <p>{{get.email}}</p>
+            <p><img src="{{get.image.url}}" alt="img"></p>
+        {% endif %}
+    
+{% endblock %}

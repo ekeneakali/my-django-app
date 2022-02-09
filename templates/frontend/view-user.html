@@ -1,0 +1,34 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+    <table width="500px" border="1">
+        <tr>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Images</th>
+            <th colspan="3">Action</th>
+        </tr>
+        {% if user %}
+            {% for x in user %}
+                <tr>
+                    <td>{{x.username }}</td>
+                    <td>{{x.first_name }}</td>
+                    <td>{{x.last_name}}</td>
+                    <td>{{x.email}}</td>
+                    <td><img src="{{x.image.url}}" alt="img" class="img-responsive"></td>
+                    <td><a href="{% url 'frontend:view' x.id %}" class="btn btn-primary"><i class="fa fa-eye">view users</i></a></td>
+                    
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+
+{% endblock %}

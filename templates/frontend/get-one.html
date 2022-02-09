@@ -1,0 +1,76 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  get one
+{% endblock %}
+
+{% block content %}
+
+        <div style="text-align: center; background-color: cadetblue;">
+            <h1>AVOID RISKY TRANSACTION </h1>
+
+            1:make sure you meet the buyer or the seller in a safe place before paying for the goods<br><br>
+            2:don't pay before the goods<br><br>
+            3:identify the person before TRANSACTION<br><br>
+            4:talknet will not pay for any loss in TRANSACTION<br><br>
+        </div>
+        {% include 'frontend/ads.html' %}
+          
+
+  <div class="container-fluid">
+    <div class="row">
+      {% if home %}
+        <div class="col-md-4">
+          <p>Name of product:{{home.pst_title }}</p>
+          <p>created by:{{home.created_by}}</p>
+          <p><img src="{{home.images.url}}" alt="img" class="img-responsive"></p>
+          <p>Category:{{home.category}}</p>
+          <p>Description:{{home.content}}</p>
+          <p>posted on:{{home.created_at}}</p>
+          <h1 style="text-align: center;">Comment on this photo product</h1><hr>
+          {% if messages %}
+            {% for mes in messages %}
+              <div class="alert alert-success">{{mes}}</div>
+            {% endfor %}
+          {% endif %}
+          {% if comment %}
+            {% for c in comment %}
+              <div style="background-color: cadetblue; padding: 10px; border-radius: 5px;">
+                <p>Name: {{c.name}}</p>
+                <p>Comment: {{c.comment}}</p>
+                <p>Created on:{{c.created_at}}</p>
+              </div><br><br>
+              {% endfor %}
+            {% endif %}
+
+        </div>
+        
+
+                
+      <form method="post">
+          <div class="form-group">
+            <label for="name">name</label><br><br>
+            <input type="text" name="name" required maxlength="50" id="name" class="form-control" placeholder="enter name">
+          </div><br>
+          <div class="form-group">
+            <label for="comment">comment</label><br><br>
+            <textarea name="comment" required placeholder="enter comment" class="form-control"></textarea><br><br>
+            <button class="btn btn-primary" type="submit">submit</button>
+            <button class="btn btn-primary" type="reset">reset</button>
+          </div>
+          {% csrf_token %}
+          
+          
+        </form>
+        
+      
+        </div>
+        {% endif %}
+      
+    </div>
+    </div>
+  
+
+{% endblock %}

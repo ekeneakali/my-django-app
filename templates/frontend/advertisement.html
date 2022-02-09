@@ -1,0 +1,35 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  advertisement
+{% endblock %}
+
+{% block content %}
+            <div style="background-color: burlywood;">
+                <h1>BY ADVERTISING WITH US YOU AGREE TO OUR TERMS AND CONDITION FOR YOUR ADVERT TO BE DISPLAY IN OUR WEB PAGES</h1><br>
+                <p>(1)enter a valid email adress to receive feedback</p>
+                <p>(2)after 7 days of display you will have to pay a sum of #500,000
+                    for continous display every month</p>
+                <a href="#">YES</a> or <a href="{% url 'home' %}">NO</a>
+            </div>
+        {% if messages %}
+            {% for mes in messages %}
+                <div class="alert alert-success">{{mes}}</div>
+            {% endfor %}
+        {% endif %}
+<form method="post" enctype="multipart/form-data"><br><br>
+    <table class="table table-bordered">
+        {{form.as_table}}
+    </table>
+
+    <button type="submit" class="btn btn-primary">send</button>
+    <button type="reset" class="btn btn-primary">reset</button>
+
+
+    {% csrf_token %}
+
+</form>
+
+{% endblock %}

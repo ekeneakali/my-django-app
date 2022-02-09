@@ -1,0 +1,49 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  login
+{% endblock %}
+
+{% block content %}
+  <h1>Login Here</h1>
+<section id="content"><br><br>
+  <div class="row">
+    <div class="col-sm-9 text-center" id="mainContent">
+      <div class="row">
+        <div class="col-sm-12">
+          {% if messages %}
+          {% for mes in messages %}
+            <div class="alert alert-danger">{{mes}}</div>
+          {% endfor %}
+        {% endif %}
+      
+          <form action="#" class="form" method="post">
+            
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="labelName">Username</label>
+                  <input type="text" name="username" id="labelUsername" placeholder="Your Userename" class="form-control">
+                </div>
+              </div>
+              <div class="col-sm-12">
+                 <div class="form-group">
+                  <label for="labelPassword">Password</label>
+                  <input type="password" name="password" id="labelPassword" placeholder="Your Password" class="form-control">
+                </div>
+              </div>
+            
+            </div>
+           <input type="submit" class="btn btn-warning" value="Login">
+           <input type="reset" class="btn btn-warning" value="Reset">
+           <a href="{% url 'frontend:forget_password' %}" class="btn btn-success">forget-password</a>
+              {% csrf_token %}
+      
+          </form>
+          <h1>don't have an account <a href="{% url 'frontend:register' %}" class="btn btn-primary"><i class="fa fa-pencil">Register</i></a> instead</h1>
+        </div>
+      </div>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

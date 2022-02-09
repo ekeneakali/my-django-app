@@ -1,0 +1,43 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+    
+    <h1 style="text-align: center;">BE THE FIRST TO BUY AND SELL HERE</h1>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-8">
+          <img src="{% static 'frontend/images/buhari.jpg' %}" height="200px" width="200px" alt="img">
+          <img src="{% static 'frontend/images/cart.png' %}" height="200px" width="200px" alt="img">
+            </div>
+          </div>
+        </div> -->
+
+  <div class="container-fluid">
+    <div class="row">
+      {% if home %}
+        {% for x in home %}
+        <div class="col-md-4">
+          <p>Name of product:{{x.pst_title }}</p>
+          <p>created by:{{x.created_by}}</p>
+          <p><a href="{% url 'frontend:get_one' x.id %}"><img src="{{x.images.url}}" alt="img" class="img-responsive"></a></p>
+          <p>Category:{{x.category}}</p>
+          <p>Description:{{x.content}}</p>
+          <p>Posted on:{{x.created_at}}</p>
+          <a href="{% url 'frontend:get_one' x.id %}" class="btn btn-primary">readmore</a>
+        </div>
+        {% endfor %}
+      {% endif %}
+      
+    </div>
+  </div>
+  
+
+  
+
+{% endblock %}

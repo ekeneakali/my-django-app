@@ -1,0 +1,22 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  application
+{% endblock %}
+
+{% block content %}
+          
+        <div style="text-align: center; margin-bottom: 70px;">
+            <ul>
+                <li>(1)by posting a product here anything you are posting must be related to buisness</li>
+                <li>(2)if you post anything out of buisness here it will be deleted</li>
+
+                <a href="{% url 'frontend:video' %}" class="btn btn-info">Click here to go back to add-videos</a>
+                <p>or</p>
+                <a href="{% url 'frontend:add_post' %}" class="btn btn-info">Click here to go back to add-photos</a>
+            </ul>
+
+        </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+            <div>
+                <h1>YOUR DATA IS SAFE WITH US</h1>
+                <p>(1)by contacting us we ensure we will provide your need</p>
+                <p>(2)enter a valid email adress to receive feedback</p>
+            </div>
+        {% if messages %}
+            {% for mes in messages %}
+                <div class="alert alert-success">{{mes}}</div>
+            {% endfor %}
+        {% endif %}
+<form method="post"><br>
+    <table class="table table-bordered">
+        {{form.as_table}}
+    </table><br>
+
+    <button type="submit" class="btn btn-primary">add contact</button>
+    <button type="reset" class="btn btn-primary">reset</button>
+
+
+    {% csrf_token %}
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  view
+{% endblock %}
+
+{% block content %}
+          <div style="margin-bottom: 300px; margin-top: 50px; text-align: center;">
+            ARE YOU SURE YOU WANT TO LOGOUT <a href="{% url 'frontend:logout_view' %}" class="btn btn-primary">YES</a> OR <a href="{% url 'home' %}" class="btn btn-primary">NO</a>
+
+          </div>
+
+        
+{% endblock %}

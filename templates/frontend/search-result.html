@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="e-commerce">
+    <meta name="keywords" content="html,css,bootstrap,javascript,python,django">
+    <meta name="founder" content="ekene akali">
+    <meta name="services" content="online store, online retail, online marketing, e-commerce, buisness to buisness, buisness to consumer, consumer to buisness">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    
+</head>
+<body>
+    
+    {% if query %}
+        <center><h2>{% if request.user.is_authenticated %}{{request.user.username}}:{% endif %} you searched for...</h2></center>
+        {% for x in query %}
+        <p>Name of product:{{x.pst_title}}</p>
+        <p>Created by:{{x.created_by}}</p>
+        <a href="{% url 'frontend:get_one' x.id %}"><img src="{{x.images.url}}" alt="img"></a>
+        <p>Category:{{x.category}}</p>
+        <p>Description:{{x.content}}</p>
+        <p>Uploaded on:{{x.created_at}}</p>
+        <a href="{% url 'frontend:get_one' x.id %}" class="btn btn-primary">read more</a><br> or
+        <a href="{% url 'frontend:logout_view' %}" class="btn btn-primary">log out</a>
+        {% endfor %}
+        {% else %}
+        <a href="{% url 'home' %}"><center><h6>no result found</h6></center></a>
+        {% endif %}
+        <div>
+            
+        </div>
+             
+        <form action="{% url 'frontend:search' %}" method="get">
+            <input type="text" name="search" placeholder="what are you looking for">
+            <button type="submit" class="btn btn-primary">search</button>
+            {% csrf_token %}
+            
+        </form>
+        
+    
+    
+</body>
+</html>

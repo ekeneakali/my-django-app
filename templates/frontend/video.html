@@ -1,0 +1,30 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  video
+{% endblock %}
+
+{% block content %}
+  <p style="color: darksalmon;"><h1>Addvideo Here</h1></p>
+      <p>By adding a video you agree to our <a href="{% url 'frontend:term_condition' %}" class="btn btn-success">terms and condition</a></p>
+
+    {% if messages %}
+      {% for mes in messages %}
+        <div class="alert alert-success">{{mes}}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+      <table class="table table-bordered">
+        {{form.as_table}}
+      </table><br>
+      <button type="submit" class="btn btn-primary">send</button>
+      <button type="reset" class="btn btn-primary">reset</button>
+
+      {% csrf_token %}
+
+    </form>
+      
+{% endblock %}

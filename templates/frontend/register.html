@@ -1,0 +1,30 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+      <h1>REGISTER HERE AND BECOME PART OF OUR MEMBER</h1>
+
+    {% if messages %}
+      {% for mes in messages %}
+        <div class="alert alert-success">{{mes}}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+      <table class="table table-bordered">
+        {{form.as_table}}
+      </table><br>
+      <button type="submit" class="btn btn-primary">send</button>
+      <button type="reset" class="btn btn-primary">reset</button>
+
+      {% csrf_token %}
+
+    </form>
+        <h1>already have an account <a href="{% url 'frontend:log_in' %}" class="btn btn-primary"><i class="fa fa-book">Login</i></a> instead</h1>
+      
+{% endblock %}

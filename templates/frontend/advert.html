@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>advert</title>
+</head>
+<body>
+    <table width="500" border="1">
+        <tr>
+            <th>Company</th>
+            <th>Email</th>
+            <th>Images</th>
+            <th>Description</th>
+        </tr>
+        {% if ading %}
+            {% for x in ading %}
+            <tr>
+                <td>{{x.company_name}}</td>
+                <td>{{x.email}}</td>
+                <td><img src="{{x.image.url}}" width="200px" height="200px" alt="img"></td>
+                <td>{{x.description}}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        
+    </table>
+
+    
+</body>
+</html>

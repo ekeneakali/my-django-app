@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="e-commerce">
+    <meta name="keywords" content="html,css,bootstrap,javascript,python,django">
+    <meta name="founder" content="ekene akali">
+    <meta name="services" content="online store, online retail, online marketing, e-commerce, buisness to buisness, buisness to consumer, consumer to buisness">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'frontend/css/bootstrap.min.css' %}">
+    <style>
+      body{
+	margin: 10px;
+  box-sizing: border-box;
+}
+.about{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  background-color: gold;
+
+	
+}
+.head{
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    background-color: yellow;
+    overflow: hidden;
+    
+}
+
+.nav{
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    height: 110px;
+    top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: none;
+    list-style-image: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.nav:hover{
+    color: green;
+    
+}
+
+</style>
+  
+  </head>
+  <body>
+    <div class="head">
+      <span style="font-size: 70px; color:blue;">T</span>
+      <span style="font-size: 30px; color: blue;">a</span>
+      <span style="font-size: 30px; color: blue;">l</span>
+      <span style="font-size: 30px; color: blue;">k</span>
+      <span style="font-size: 70px; color: red;">N</span>
+      <span style="font-size: 30px; color: red;">e</span>
+      <span style="font-size: 30px; color: red;">t</span>
+      {% include 'frontend/search-result.html' %}
+      <a href="{% url 'frontend:add_post' %}"><img src="{% static 'frontend/images/cart.png' %}" style="float: left;" height="20px" width="20px" alt="img"></a>
+  </div>
+  <div class="nav">
+    <a href="{% url 'home' %}" style="margin-left: 10px; color: white;">Home</a>
+    <a href="{% url 'frontend:register' %}" style="margin-left: 10px; color: white;">SignUp</a>
+    <a href="{% url 'frontend:log_in' %}" style="margin-left: 10px; color: white;">Login</a>
+    <a href="{% url 'frontend:add_post' %}" style="margin-left: 10px; color: white;">AddProducts</a>
+    <a href="{% url 'frontend:view_post' %}" style="margin-left: 10px; color: white;">EditProducts</a>
+    <a href="{% url 'frontend:view_profile' %}" style="margin-left: 10px; color: white;">EditProfile</a>
+    <a href="{% url 'frontend:advertisement' %}" style="margin-left: 10px; color: white;">AdvertisewithUS</a>
+    <a href="{% url 'frontend:view_video' %}" style="margin-left: 10px; color: white;">Videos</a>
+    <a href="{% url 'frontend:user_video' %}" style="margin-left: 10px; color: white;">EditVideos</a>
+    </div>
+    
+  {% if request.user.is_authenticated %}
+  <span style="color: goldenrod;">{{request.user.username}}:is active</span>
+  {% else %}
+  {% endif %}
+      
+
+        {% block content %}
+      {% endblock %}
+      <!-- END OF SITE MENU -->
+        {% if request.user.is_authenticated %}
+        <p style="text-align: center; color: coral;">Welcome {{request.user.username}}</p>
+        {% else %}
+        {% endif %}
+      <footer style="background-color: green; text-align: center; margin-top: 20px; margin: 10px; border-radius: 10px;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <li><a href="{% url 'frontend:about' %}">about us</a></li><br>
+                            <li><a href="{% url 'frontend:privacy' %}"><i class="fa fa-bed"></i>privacy policy</a></li><br>
+                          <a href="http://www.facebook.com/talknet"><i class="fa fa-facebook"></i>like us on facebook</a><br><br>
+                          <li><a href="#">link</a></li><br>
+                          
+            </div>
+          <div class="col-md-4">
+            <li><a href="{% url 'frontend:contact_us' %}"><i class="fa fa-phone">contact us</i></a></li><br>
+                <li><a href="{% url 'frontend:change_password' %}"><i class="fa fa-key"></i>change password</a></li><br>
+                <a href="{% url 'frontend:log_in' %}">log-in</a><br><br>
+                <li><a href="{% url 'frontend:term_condition' %}">terms and condition</a></li><br>
+              </div>
+          <div class="col-md-4 offset-col-md-4">
+            <a href="{% url 'frontend:confirm_logout' %}">log-out</a><br><br>
+                  <a href="{% url 'frontend:view_user' %}">view users</a><br><br>
+                  <a href="{% url 'frontend:register' %}">sign-up</a><br><br>
+                  <li><a href="{% url 'frontend:forget_password' %}">forget-password</a></li>
+          </div>
+
+    
+              
+                  
+
+          
+        </div>
+      </div>
+  </footer>
+  <p style="text-align: center;">Talknet {{current_year}} Production</p>
+  <p style="text-align: center; color: gold;"><a href="#top">back to top</a></p>
+    
+
+
+
+
+    
+    <script src="{% static 'frontend/js/jquery.js' %}"></script>
+    <script src="{% static 'frontend/js/popper.min.js' %}"></script>
+    <script src="{% static 'frontend/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

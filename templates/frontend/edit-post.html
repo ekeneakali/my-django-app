@@ -1,0 +1,25 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+        {% if messages %}
+            {% for mes in messages %}
+                <div class="alert alert-success">{{mes}}</div>
+            {% endfor %}
+        {% endif %}
+<form method="post" enctype="multipart/form-data">
+            <table class="table table-bordered">
+                {{form.as_table}}
+            </table>
+    <button type="submit" class="btn btn-primary">edit product</button>
+
+    {% csrf_token %}
+
+</form>
+
+{% endblock %}

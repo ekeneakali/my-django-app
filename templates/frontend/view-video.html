@@ -1,0 +1,45 @@
+{% extends 'frontend/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    view_video
+{% endblock %}
+
+{% block content %}
+                {% include 'frontend/get-search.html' %}
+
+    <h1>Videos</h1>
+    <p style="text-align: center;"><a href="{% url 'frontend:video' %}" class="btn btn-success">Click here to add a video SALES</a></p>
+    <div class="container-fluid">
+        <div class="row">
+            {% if home %}
+                {% for x in home %}
+                <div class="col-md-4">
+                    <p>Name of product:{{x.pst_title}}</p>
+                    <p>Created by:{{x.created_by}}</p>
+                    <a href="{% url 'frontend:get_video' x.id %}"><video src="{{x.video.url}}" width="300px" height="200px" controls></video></a>
+                    <p>Category:{{x.category}}</p>
+                    <p>Description:{{x.content}}</p>
+                    <p>Uploaded on:{{x.created_at}}</p>
+                    <a href="{% url 'frontend:get_video' x.id %}" class="btn btn-info">read more</a>
+
+                </div>
+                {% endfor %}
+            {% endif %}
+
+
+
+        </div>
+
+    </div>
+
+
+    <p style="text-align: center;"><a href="{% url 'frontend:video' %}" class="btn btn-success">Click here to add a video SALES</a></p>
+    
+    
+      
+    
+  
+
+{% endblock %}
